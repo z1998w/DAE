@@ -51,7 +51,7 @@ class Net(nn.Module):
             layer = nn.Linear(layers[i], layers[i + 1])
             self.layers.append(layer)
         
-        # Xavier (Glorot) 初始化，适用于 Tanh 激活函数
+       
         self.apply(self._initialize_weights)
         
         self.activation = nn.Tanh()
@@ -65,10 +65,10 @@ class Net(nn.Module):
                 init.zeros_(layer.bias)
 
     def forward(self, x):
-        # 对于除最后一层外的所有层，应用 Tanh 激活函数
+        
         for i in range(len(self.layers) - 1):
             x = self.activation(self.layers[i](x))
-        # 最后一层不应用激活函数
+       
         return self.layers[-1](x)
 
 
